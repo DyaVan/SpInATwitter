@@ -36,11 +36,14 @@ public class ApplicationContext implements Context{
         if (classTemplate == null) {
             throw new RuntimeException("Bean not found");
         }
-        bean = (T) classTemplate.newInstance();
 
-        callPostConstructBean(bean);
-        bean = createProxy(bean);
-        callInitMethod(bean);
+        BeanBuilder builder = new BeanBuilder(classTemplate);
+        builder.createBean();
+        builder.callPostCreateMethod();
+        builder.callInitMethod();
+        builder.createBeanProxy();
+        bean = (T) builder.build();
+
 
         beans.put(beanName, bean);
         return bean;
@@ -54,6 +57,7 @@ public class ApplicationContext implements Context{
                 method.invoke(bean);
             }
         }
+        System.out.println("PostConstructBean called");
     }
 
     private <T> void callInitMethod(T bean) throws InvocationTargetException, IllegalAccessException {
@@ -65,6 +69,7 @@ public class ApplicationContext implements Context{
             return;
         }
         method.invoke(bean);
+
     }
 
     private <T> T createProxy(T bean) {

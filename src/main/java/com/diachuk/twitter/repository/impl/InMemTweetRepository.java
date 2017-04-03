@@ -31,4 +31,9 @@ public class InMemTweetRepository implements TweetRepository {
     public Iterable findAll() {
         return new ArrayList(tweets);
     }
+
+
+    public void init() {
+
+    }
 }

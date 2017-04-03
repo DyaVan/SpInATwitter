@@ -1,7 +1,12 @@
 package com.diachuk.twitter.service;
 
+import com.diachuk.twitter.domain.Tweet;
+
 /**
  * Created by VA-N_ on 03.04.2017.
  */
 public interface TweetService {
+    void save(Tweet tweet);
+
+    Iterable findAll();
 }
