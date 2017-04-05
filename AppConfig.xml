@@ -4,8 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean name="tweetRepository" class="com.diachuk.twitter.repository.impl.InMemTweetRepository">
-
     </bean>
+
+    <bean name="tweet" class="com.diachuk.twitter.domain.Tweet" scope="prototype"/>
 
 
 </beans>

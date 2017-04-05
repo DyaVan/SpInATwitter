@@ -1,6 +1,7 @@
 package com.diachuk.twitter.service;
 
 import com.diachuk.twitter.domain.Tweet;
+import com.diachuk.twitter.domain.User;
 import com.diachuk.twitter.repository.TweetRepository;
 
 /**
@@ -14,6 +15,10 @@ public class TweetServiceImpl implements TweetService {
         this.tweetRepository = tweetRepository;
     }
 
+    @Override
+    public Tweet createTweet(String text, User user) {
+        return new Tweet(user, text);
+    }
 
     @Override
     public void save(Tweet tweet) {
