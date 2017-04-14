@@ -2,6 +2,8 @@ package com.diachuk.twitter.infrastructure;
 
 import org.springframework.beans.factory.FactoryBean;
 
+import java.util.concurrent.Semaphore;
+
 /**
  * Created by Ivan_Diachuk on 4/5/2017.
  */
@@ -10,6 +12,7 @@ public class MyFactoryBean implements FactoryBean<String> {
     @Override
     public String getObject() throws Exception {
         return new String("Hi");
+
     }
 
     @Override

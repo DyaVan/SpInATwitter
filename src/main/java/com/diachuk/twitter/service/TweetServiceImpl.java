@@ -29,4 +29,11 @@ public class TweetServiceImpl implements TweetService {
     public Iterable findAll() {
         return tweetRepository.findAll();
     }
+
+    @Override
+    public Iterable<Tweet> findByUser(User user) {
+        return null;
+    }
+
+
 }

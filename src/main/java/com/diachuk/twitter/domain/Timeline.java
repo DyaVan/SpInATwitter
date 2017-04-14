@@ -1,6 +1,9 @@
 package com.diachuk.twitter.domain;
 
+import javafx.collections.transformation.SortedList;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -8,14 +11,16 @@ import java.util.List;
  */
 public class Timeline {
 
-    private final List<Tweet> tweets = new ArrayList();
+    private final ArrayList<Tweet> tweets = new ArrayList();
 
     public void put(Tweet tweet){
         tweets.add(tweet);
     }
 
     public Iterable<Tweet> getTweets() {
+        Collections.sort(tweets);
         return new ArrayList(tweets);
     }
+
 }
 

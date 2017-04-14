@@ -19,35 +19,6 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class App 
 {
     public static void main( String[] args ) throws Exception {
-        //TweetRepository tweetRepository = new InMemTweetRepository();
-
-        /*InitialContext context = new InitialContext(new JavaConfig());
-        TweetRepository tweetRepository = (TweetRepository) context.lookup("tweetRepo");*/
-
-//        Context context = new ApplicationContext(new JavaConfig());
-//        TweetRepository tweetRepository = context.getBean("tweetRepo");
-//
-//
-//        TweetService tweetService = context.getBean("tweetService");
-//
-//
-//
-//        tweetRepository.findAll().forEach(System.out::println);
-//        tweetRepository.save(new Tweet(new User(), "asf"));
-
-
-        ConfigurableApplicationContext context = new FileSystemXmlApplicationContext(
-                "AppConfig.xml","ServiceConfig.xml");
-
-
-        TweetRepository tweetRepository = (TweetRepository) context.getBean("tweetRepository");
-        TweetService tweetService = (TweetService) context.getBean("tweetService");
-
-        tweetRepository.findAll().forEach(System.out::println);
-        tweetRepository.save(new Tweet(new User(), "asf"));
-
-        System.out.println(context.getBeanFactory().getBeanDefinition("tweetService"));
-
 
 
     }

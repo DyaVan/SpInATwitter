@@ -3,10 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="tweetRepository" class="com.diachuk.twitter.repository.impl.InMemTweetRepository">
+    <bean name="tweetService" class="com.diachuk.twitter.service.TweetServiceImpl">
+        <constructor-arg ref="tweetRepository"/>
     </bean>
-
-    <bean name="tweet" class="com.diachuk.twitter.domain.Tweet" scope="prototype"/>
-
 
 </beans>
