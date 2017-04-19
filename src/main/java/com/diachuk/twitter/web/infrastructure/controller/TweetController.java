@@ -1,16 +1,22 @@
 package com.diachuk.twitter.web.infrastructure.controller;
 
 import com.diachuk.twitter.domain.Tweet;
+import com.diachuk.twitter.domain.User;
+import com.diachuk.twitter.repository.TweetRepository;
+import com.diachuk.twitter.repository.UserRepository;
+import com.diachuk.twitter.repository.impl.InMemUserRepository;
 import com.diachuk.twitter.service.TweetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.PropertiesEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.beans.PropertyEditorSupport;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -26,9 +32,11 @@ public class TweetController implements IController/*,Applic      ationContextAw
     @Autowired
     TweetService tweetService;
 
+
     @RequestMapping("/tweet")
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         PrintWriter printWriter = response.getWriter();
         System.out.println(applicationContext);
         System.out.println(applicationContext.getDisplayName());
@@ -49,5 +57,14 @@ public class TweetController implements IController/*,Applic      ationContextAw
         model.addAttribute("allTweets",allTweets);
         return "tweets-page";
     }
+
+
+
+    @RequestMapping(value = "/tweet/single", method = RequestMethod.GET)
+    @ResponseBody
+    public String single(@ModelAttribute("id") Tweet tweet) {
+        return tweet.toString();
+    }
+
 
 }

@@ -11,4 +11,6 @@ public interface TweetRepository {
 
     Iterable findAll();
 
+    Tweet findById(Long id);
+
 }

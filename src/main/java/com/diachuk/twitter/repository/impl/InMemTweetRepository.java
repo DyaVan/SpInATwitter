@@ -9,7 +9,9 @@ import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by VA-N_ on 03.04.2017.
@@ -17,22 +19,28 @@ import java.util.List;
 public class InMemTweetRepository implements TweetRepository {
 
 
-    private List<Tweet> tweets = new ArrayList();
+    private Map<Long, Tweet> tweets = new HashMap<>();
 
     @PostConstruct
     public void initialize(){
-        System.out.println("dddddddddddddddddddddddddddddddddddddddddddd");
-        tweets.add(new Tweet(new User(1L,"Ivan"), "first"));
-        tweets.add(new Tweet(new User(2L, "Denis"), "second)"));
+        Tweet tweet1 = new Tweet(new User(1L,"Ivan"), "I traveled with (@id1) and (@id2) to the USA!!!");
+        Tweet tweet2 = new Tweet(new User(2L, "Denis"), "I didn't travel with (@id3) and (@id1sdw)  and (@id14sdw)!)");
+        tweets.put(tweet1.getId(), tweet1);
+        tweets.put(tweet2.getId(), tweet2);
     }
 
     public void save(Tweet tweet) {
-        tweets.add(tweet);
+        tweets.put(tweet.getId(),tweet);
     }
 
     @Benchmark
     public Iterable findAll() {
-        return tweets;
+        return tweets.values();
+    }
+
+    @Override
+    public Tweet findById(Long id) {
+        return tweets.get(id);
     }
 
 

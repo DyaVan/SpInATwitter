@@ -17,4 +17,8 @@ public interface TweetService {
     Iterable findAll();
 
     Iterable<Tweet> findByUser(User user);
+
+    Tweet replaceReferencesWithUserNames(Tweet tweet);
+
+
 }
