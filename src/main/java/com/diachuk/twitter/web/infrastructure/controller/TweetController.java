@@ -24,13 +24,16 @@ import java.io.PrintWriter;
  * Created by Ivan_Diachuk on 4/12/2017.
  */
 @Controller
-public class TweetController implements IController/*,Applic      ationContextAware*/ {
+public class TweetController implements IController {
 
     @Autowired
     org.springframework.context.ApplicationContext applicationContext;
 
     @Autowired
     TweetService tweetService;
+
+    @Autowired
+    TweetRepository tweetRepository;
 
 
     @RequestMapping("/tweet")
@@ -60,9 +63,9 @@ public class TweetController implements IController/*,Applic      ationContextAw
 
 
 
-    @RequestMapping(value = "/tweet/single", method = RequestMethod.GET)
+    @RequestMapping(value = "/tweet/single/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public String single(@ModelAttribute("id") Tweet tweet) {
+    public String single(@PathVariable("id") Tweet tweet) {
         return tweet.toString();
     }
 

@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.beans.PropertyEditorSupport;
 
-/**
- * Created by Ivan_Diachuk on 4/19/2017.
- */
-
 @ControllerAdvice
 public class TweetControllerAdvice {
 
@@ -26,10 +22,10 @@ public class TweetControllerAdvice {
     private UserRepository userRepository;
 
 
-    @ModelAttribute
-    public User user(@RequestParam("user") User user) {
-        return user;
-    }
+//    @ModelAttribute
+//    public User user(@RequestParam(value = "user", defaultValue = "1") User user) {
+//        return user;
+//    }
 
     @InitBinder
     public void tweetBinder(WebDataBinder binder) {
@@ -38,9 +34,10 @@ public class TweetControllerAdvice {
             public void setAsText(String text) throws IllegalArgumentException {
                 Long id = Long.valueOf(text);
                 User user = userRepository.findById(id);
-                setValue(user);
+                setValue(user != null ? user : new User());
+
             }
         });
-
     }
+
 }

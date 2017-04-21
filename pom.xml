@@ -5,7 +5,6 @@
     <groupId>com.diachuk.twitter</groupId>
     <artifactId>Twitter</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <packaging>war</packaging>
 
     <name>Twitter</name>
@@ -48,12 +47,12 @@
             <version>${org.springframework.version}</version>
         </dependency>
 
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/javax.servlet/servlet-api &ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>javax.servlet</groupId>-->
-        <!--<artifactId>servlet-api</artifactId>-->
-        <!--<version>3.1.0</version>-->
-        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
         <dependency>

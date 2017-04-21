@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
 @ContextConfiguration({
-        "../../../../../../../webapp/WEB-INF/WebContext.xml"
+        "WEB-INF/WebContext.xml"
 })
 public class TweetControllerTest {
 

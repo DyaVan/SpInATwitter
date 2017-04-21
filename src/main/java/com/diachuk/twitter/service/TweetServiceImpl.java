@@ -5,15 +5,15 @@ import com.diachuk.twitter.domain.User;
 import com.diachuk.twitter.repository.TweetRepository;
 import com.diachuk.twitter.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by VA-N_ on 03.04.2017.
- */
+@Component
 public class TweetServiceImpl implements TweetService {
 
     @Autowired

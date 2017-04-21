@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="MyTwitter" />
+        <module name="SpInATwitter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="MyTwitter" target="1.8" />
+      <module name="SpInATwitter" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

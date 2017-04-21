@@ -11,16 +11,28 @@ import java.util.List;
  */
 public class Timeline {
 
-    private final ArrayList<Tweet> tweets = new ArrayList();
-
-    public void put(Tweet tweet){
-        tweets.add(tweet);
+    public Timeline(User owner, List<Tweet> tweets) {
+        this.owner = owner;
+        this.tweets = tweets;
     }
 
-    public Iterable<Tweet> getTweets() {
-        Collections.sort(tweets);
-        return new ArrayList(tweets);
+    private User owner;
+    private List<Tweet> tweets;
+
+    public User getOwner() {
+        return owner;
     }
 
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public List<Tweet> getTweets() {
+        return tweets;
+    }
+
+    public void setTweets(List<Tweet> tweets) {
+        this.tweets = tweets;
+    }
 }
 

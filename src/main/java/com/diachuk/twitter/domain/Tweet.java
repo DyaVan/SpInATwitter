@@ -96,7 +96,14 @@ public class Tweet implements Comparable{
     @Override
     public String toString() {
         return "Tweet{" +
-                "text='" + text + '\'' +
+                "id=" + id +
+                ", user=" + user +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", likes=" + likes +
+                ", retweeted=" + retweeted +
+                ", retweets=" + retweets +
+                ", mentions=" + mentions +
                 '}';
     }
 }

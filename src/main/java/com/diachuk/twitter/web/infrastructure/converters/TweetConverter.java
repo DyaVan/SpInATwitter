@@ -5,11 +5,14 @@ import com.diachuk.twitter.repository.TweetRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
-/**
- * Created by Ivan_Diachuk on 4/19/2017.
- */
+@Component("tweetConverter")
 public class TweetConverter implements Converter<String,Tweet> {
+
+    public TweetConverter(){
+        System.out.println("Im created!");
+    }
 
     @Autowired
     private TweetRepository tweetRepository;
