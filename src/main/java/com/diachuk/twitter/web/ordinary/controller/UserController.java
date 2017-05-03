@@ -1,4 +1,4 @@
-package com.diachuk.twitter.web.infrastructure.controller;
+package com.diachuk.twitter.web.ordinary.controller;
 
 import com.diachuk.twitter.domain.Timeline;
 import com.diachuk.twitter.domain.User;

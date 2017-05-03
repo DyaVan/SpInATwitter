@@ -1,8 +1,7 @@
-package com.diachuk.twitter.web.infrastructure.converters;
+package com.diachuk.twitter.web.converters;
 
 import com.diachuk.twitter.domain.Tweet;
 import com.diachuk.twitter.repository.TweetRepository;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

@@ -1,15 +1,12 @@
-package com.diachuk.twitter.web.config;
+package com.diachuk.twitter.web.ordinary.context;
 
 
 import com.diachuk.twitter.domain.Tweet;
-import com.diachuk.twitter.web.infrastructure.converters.TweetConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ConversionServiceFactoryBean;
-import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.ViewResolver;
@@ -19,11 +16,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import java.util.HashSet;
-
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.diachuk.twitter.web")
+//@ComponentScan(value = "com.diachuk.twitter.web")
 public class WebContextConfig extends WebMvcConfigurerAdapter{
 
     @Autowired

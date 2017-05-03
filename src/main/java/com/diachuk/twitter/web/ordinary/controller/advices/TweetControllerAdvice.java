@@ -1,4 +1,4 @@
-package com.diachuk.twitter.web.infrastructure.controller.advices;
+package com.diachuk.twitter.web.ordinary.controller.advices;
 
 import com.diachuk.twitter.domain.User;
 import com.diachuk.twitter.repository.UserRepository;

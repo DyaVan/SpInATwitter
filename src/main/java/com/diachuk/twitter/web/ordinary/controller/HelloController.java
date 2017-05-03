@@ -1,4 +1,4 @@
-package com.diachuk.twitter.web.infrastructure.controller;
+package com.diachuk.twitter.web.ordinary.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
