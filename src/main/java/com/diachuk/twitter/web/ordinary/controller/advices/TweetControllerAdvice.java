@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.beans.PropertyEditorSupport;
 
-@ControllerAdvice
+@ControllerAdvice (basePackages = { "com.diachuk.twitter.web" })
 public class TweetControllerAdvice {
 
     @Autowired
@@ -34,8 +34,8 @@ public class TweetControllerAdvice {
             public void setAsText(String text) throws IllegalArgumentException {
                 Long id = Long.valueOf(text);
                 User user = userRepository.findById(id);
+                System.out.println(user);
                 setValue(user != null ? user : new User());
-
             }
         });
     }

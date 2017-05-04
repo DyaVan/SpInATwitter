@@ -12,7 +12,7 @@
     <title>User page</title>
 </head>
 <body>
-<h1>This is ${user.name} page!</h1>
+<h1>This is ${pageOwner.name} page!</h1>
 <hr>
 
 <c:forEach var="tweet" items="${timeline.tweets}">

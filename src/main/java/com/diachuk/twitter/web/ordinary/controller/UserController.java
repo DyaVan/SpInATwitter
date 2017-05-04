@@ -5,6 +5,7 @@ import com.diachuk.twitter.domain.User;
 import com.diachuk.twitter.repository.UserRepository;
 import com.diachuk.twitter.service.TimeLineService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,40 +36,16 @@ public class UserController {
         return "users";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET )
-    public String showRegisterForm(){
-        return "user-form";
-    }
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET )
     public String showUserPage(@PathVariable("id") User user,Model model){
         Timeline timeline = timeLineService.getUserTimeLine(user);
 
-        model.addAttribute("user", user);
+        model.addAttribute("pageOwner", user);
         model.addAttribute("timeline", timeline);
 
         return "user-page";
     }
 
-
-//    @ResponseBody
-//    @RequestMapping(value ="/register", method= RequestMethod.POST)
-//    public  String createUser(@RequestParam("username") String username,
-//                              @RequestParam("password")  String password, Model model) {
-//
-//
-//        User user = new User(username,password);
-//        userRepository.save(user);
-//        model.addAttribute("currentUser", user);
-//        model.addAttribute("pageHolder", user);
-//        return "redirect:/user-page";
-//    }
-
-
-    @RequestMapping( method= RequestMethod.GET)
-    public String openPage() {
-        return "create-user-page";
-    }
 
 //    @RequestMapping(value = "/register/valid")
 //    public String registerValidUser(@Valid User user, Errors errors, Model model) {
@@ -87,26 +64,30 @@ public class UserController {
 //
 //    }
 
-
-    @RequestMapping(value = {"/edit", "/register"}, method = RequestMethod.GET)
-    public String showUserForm(){
+    @RequestMapping(value = {"/edit/{id}", "/register"}, method = RequestMethod.GET)
+    public String showUserForm(@PathVariable(value = "id",required = false) Long id){
         return "user-form";
+    }
+
+    //// TODO: 5/4/2017 ModelAndView ??
+
+    @RequestMapping(value = {"/edit/{id}", "/register"}, method = RequestMethod.POST)
+    public String postUserForm(@Valid User user, Errors errors){
+        if (errors.hasErrors()) {
+            System.out.println("LOL");
+        }
+
+        userRepository.save(user);
+
+        return "redirect:/twitter/user/" + user.getId();
     }
 
 
 //    BindingResult // TODO: 4/21/2017
 
-    @RequestMapping(value = {"/edit","/register"}, method = RequestMethod.POST)
-    public String updateUser(@ModelAttribute  User user){
 
-        userRepository.save(user);
-
-        return "user-page";
-    }
-
-    @ModelAttribute("user")
-    @RequestMapping(value = "/edit/{id}")
-    public User getSomeUser(@PathVariable(value = "id", required = false) User user) {
+    @ModelAttribute(name = "user")
+    public User getSomeUser(@PathVariable(value = "id",required = false) User user) {
         return user;
     }
 

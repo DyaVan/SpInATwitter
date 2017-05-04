@@ -20,9 +20,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
         // root context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.register( TwitterContextConfig.class );
-//        rootContext.scan(
-//                "com.diachuk.twitter.repository",
-//                "com.diachuk.twitter.service");
         servletContext.addListener(new ContextLoaderListener(rootContext));
 
 //        AnnotationConfigWebApplicationContext webSharedContext = new AnnotationConfigWebApplicationContext();

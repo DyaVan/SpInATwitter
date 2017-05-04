@@ -32,6 +32,7 @@ public class InMemUserRepository implements UserRepository {
 
     @Override
     public void save(User user) {
+        System.out.println(user.getName());
         users.put(user.getId(), user);
     }
 

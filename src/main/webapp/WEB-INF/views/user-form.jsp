@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form method="POST"  ">
+<form method="POST">
     <c:choose>
         <c:when test="${mode eq 'edit'}">
             <h1> Edit user ${user.name}</h1>
@@ -15,7 +15,7 @@
         </c:otherwise>
     </c:choose>
 
-Username: <input type="text" name="username" value="${user.name}"/>
+Username: <input type="text" name="name" value="${user.name}"/>
 Password: <input type="password" name="password" value="${user.password}"/><br/>
 
 <c:choose>

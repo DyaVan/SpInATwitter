@@ -11,4 +11,7 @@ public class RestHelloController {
     public String hello(){
         return "Hello from REST!";
     }
+
+
+
 }
