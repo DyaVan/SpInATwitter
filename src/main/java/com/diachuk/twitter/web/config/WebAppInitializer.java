@@ -1,13 +1,16 @@
 package com.diachuk.twitter.web.config;
 
+import com.diachuk.twitter.config.SecurityContextConfig;
 import com.diachuk.twitter.config.TwitterContextConfig;
 import com.diachuk.twitter.web.ordinary.context.WebContextConfig;
 import com.diachuk.twitter.web.rest.context.RestWebContextConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -19,12 +22,16 @@ public class WebAppInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         // root context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-        rootContext.register( TwitterContextConfig.class );
+        rootContext.register( TwitterContextConfig.class, SecurityContextConfig.class);
         servletContext.addListener(new ContextLoaderListener(rootContext));
 
 //        AnnotationConfigWebApplicationContext webSharedContext = new AnnotationConfigWebApplicationContext();
 //        webSharedContext.setParent(rootContext);
 //        webSharedContext.register( WebSharedContextConfig.class );
+
+//        FilterRegistration.Dynamic filterRegistration = servletContext.addFilter("SecurityFilter", new DelegatingFilterProxy());
+//        filterRegistration.addMappingForUrlPatterns(null, true, "/*");
+
 
         // ordinary dispatcher servlet
         AnnotationConfigWebApplicationContext ordinaryWebContext = new AnnotationConfigWebApplicationContext();
